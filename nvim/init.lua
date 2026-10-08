@@ -32,3 +32,18 @@ vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 vim.cmd('set number')
 vim.cmd('set relativenumber')
+
+vim.lsp.config('clangd', {
+	cmd = { 'clangd' },
+	filetypes = { 'c' },
+	root_markers = { 'compile_commands.json', 'compile_flags.txt', '.git',  },
+})
+
+vim.lsp.enable('clangd')
+
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+-- grr checks for references
+-- K hovers
+-- grn renames
+-- gra quick-fix list
+-- ctrl+W D Displays error
